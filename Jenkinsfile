@@ -20,7 +20,7 @@ node('') {
 	}
 	
 	stage ('Deployment'){
-	       deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'https://3.95.9.73:8080/')], contextPath: 'webapp', war: 'target/*.war'
+	       deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'http://3.95.9.73:8080/')], contextPath: 'webapp', war: 'target/*.war'
 	}
 	
 	//stage ('Notification'){
