@@ -20,11 +20,11 @@ node('') {
 	}
 	
 	stage ('Deployment'){
-		ansiblePlaybook colorized: true, disableHostKeyChecking: true, playbook: 'deploy.yml'
+	       deploy adapters: [tomcat9(credentialsId: 'TomcatCreds', path: '', url: 'https://3.95.9.73:8080/')], contextPath: 'webapp', war: 'target/*.war'
 	}
 	
 	stage ('Notification'){
-		emailext (
+		//emailext (
 		      subject: "Job Completed",
 		      body: "Jenkins Pipeline Job for Maven Build got completed !!!",
 		      to: "build-alerts@example.com"
